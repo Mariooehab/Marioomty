@@ -2250,3 +2250,88 @@ body {
         margin: 20px auto;
     }
 }
+
+/* iOS 15 FONT */
+@font-face {
+    font-family: "iOS 15";
+    src: url("./Fonts/ios15.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* APPLY FONT TO ENTIRE WEBSITE */
+*,
+*::before,
+*::after {
+    font-family: "iOS 15", sans-serif !important;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select,
+option {
+    font-family: "iOS 15", sans-serif !important;
+}
+
+.close-love-message {
+    display: none;
+}
+
+.close-love-message.show {
+    display: block;
+}
+/* FIX ICON FONTS */
+[class^="fa"],
+[class*=" fa"],
+[class^="fas"],
+[class*=" fas"],
+[class^="far"],
+[class*=" far"],
+[class^="fab"],
+[class*=" fab"],
+.fa,
+.fas,
+.far,
+.fab,
+.fa-solid,
+.fa-regular,
+.fa-brands,
+.music-bubble i,
+.music-controls i,
+.music-main-btn i,
+.music-control-btn i {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free",
+                 "Font Awesome 6 Brands", "Font Awesome 5 Brands" !important;
+}
+
+
+/* FIX FONT AWESOME ICONS WITH iOS FONT */
+
+.music-widget i.fa-solid,
+.music-widget i.fa-solid::before,
+.music-widget i[class*="fa-"],
+.music-widget i[class*="fa-"]::before {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    line-height: 1 !important;
+}
+
+/* Keep music icons visible */
+.music-bubble i,
+.music-controls i,
+.music-disc i,
+.music-volume i,
+.music-download i {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* KEEP IOS FONT FOR NORMAL TEXT */

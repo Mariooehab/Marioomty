@@ -644,6 +644,18 @@
     <p>
         كل سنة وانتي حبيبتي ومريومتي وأماني وأحن وأغلى حد عندي ❤️
     </p>
+    
+   <p>
+    وفي اخر الكلام حابب اقولك شكرا انك معايا وشكرا فضهري وشكرا انك بتدععميني وشكرا انك طمنتيني وشكرا لكل حاجه بجد ينور عيني والله ربنا يخليكي ليا وميحنرمنيش منك ابدا
+   </p>
+
+   <p>
+    وحقك عليا حاجه بسيطه بس يارب تعجبك وانا اسف اني معرفتش اعمل اكتر من ده دلوقتي سامحيني ويارب ما تزعلي مني حقك عليا تاني ينور عيني انا اسف 
+   </p>
+
+   <p>
+    عمتا يعني السطر ده والاتنين الي قبله دول انا كتبتهم من شويه اصلا لما قولتلك خلصت الموقع بتاع العميل الرزل بس  انا  قولت رزل وقتها عشان كان بينكد عليا ويقولي بنات ومش بنات ف بحبك اوي اوي والله ويارب تعجبك واخر حاجه في الموقع خلصت يوم 18/11/2026 الساعه 10:27:18 بالثواني كمان اهو وبجد انا بموت فيكي اوي ويارب يعجبك ينور عيني 
+   </p>
 
     <p>
         بحبك أوي يا مريومتي وبعشقك وبعشق كل تفصيلة فيكي ومهما أكتب مش هوصف انتي بقيتي إيه بالنسبالي ❤️❤️
@@ -656,9 +668,12 @@
 </div>
 
 
-<button class="close-love-message" onclick="lockLoveMessage()">
+<button
+    class="close-love-message"
+    id="closeLoveMessageBtn"
+    onclick="lockLoveMessage()">
     <i class="fa-solid fa-lock"></i>
-   اقفلي الرساله تاني❤️
+    اقفلي الرساله تاني ❤️
 </button>
 
         </div>
@@ -1401,63 +1416,66 @@ document.addEventListener("DOMContentLoaded", () => {
     </script>
 
 
-    <!-- LOVE MESSAGE PASSWORD SYSTEM -->
    <script>
-    function unlockLoveMessage() {
-        const password = document.getElementById("lovePassword");
-        const error = document.getElementById("loveLockError");
+   function unlockLoveMessage() {
+    const password = document.getElementById("lovePassword");
+    const error = document.getElementById("loveLockError");
 
-        const lock = document.getElementById("loveMessageLock");
-        const message = document.getElementById("loveMessage");
+    const lock = document.getElementById("loveMessageLock");
+    const message = document.getElementById("loveMessage");
+    const closeButton = document.getElementById("closeLoveMessageBtn");
 
-        if (password.value === "2007") {
-            error.textContent = "";
-
-            lock.style.display = "none";
-
-            message.classList.remove("hidden");
-            message.classList.add("revealed");
-
-           
-
-        } else {
-            error.textContent = "بجد يا مريم؟ الباسورد غلط ❤️";
-
-            password.value = "";
-            password.focus();
-        }
-    }
-
-    // LOCK LOVE MESSAGE AGAIN
-    function lockLoveMessage() {
-        const password = document.getElementById("lovePassword");
-        const error = document.getElementById("loveLockError");
-
-        const lock = document.getElementById("loveMessageLock");
-        const message = document.getElementById("loveMessage");
-
-        // Hide the message
-        message.classList.remove("revealed");
-        message.classList.add("hidden");
-
-        // Reset password
-        password.value = "";
+    if (password.value === "2007") {
         error.textContent = "";
 
-        // Show password screen again
-        lock.style.display = "block";
+        lock.style.display = "none";
 
-        // Scroll back to password screen
-        setTimeout(() => {
-            lock.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+        message.classList.remove("hidden");
+        message.classList.add("revealed");
 
-            password.focus();
-        }, 100);
+        // Show close button only when message is open
+        closeButton.classList.add("show");
+
+    } else {
+        error.textContent = "بجد يا مريم؟ الباسورد غلط ❤️";
+
+        password.value = "";
+        password.focus();
     }
+}
 
+
+// LOCK LOVE MESSAGE AGAIN
+function lockLoveMessage() {
+    const password = document.getElementById("lovePassword");
+    const error = document.getElementById("loveLockError");
+
+    const lock = document.getElementById("loveMessageLock");
+    const message = document.getElementById("loveMessage");
+    const closeButton = document.getElementById("closeLoveMessageBtn");
+
+    // Hide message and close button
+    message.classList.remove("revealed");
+    message.classList.add("hidden");
+
+    closeButton.classList.remove("show");
+
+    // Reset password
+    password.value = "";
+    error.textContent = "";
+
+    // Show password screen again
+    lock.style.display = "block";
+
+    setTimeout(() => {
+        lock.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        password.focus();
+    }, 100);
+}
     // ENTER TO UNLOCK
     document.getElementById("lovePassword").addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
